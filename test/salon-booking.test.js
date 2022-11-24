@@ -84,7 +84,7 @@ describe("The Booking Salon", function () {
         assert.deepEqual([
             {
                 id: 1,
-                booking_date:'2022-11-28T22',
+                booking_date:'2022-11-29',
                 booking_time: '08:00:00',
                 client_id: 1,
                 treatment_id: 1,
@@ -104,7 +104,7 @@ describe("The Booking Salon", function () {
         assert.deepEqual([
             {
               id: 1,
-              booking_date: '2022-11-28T22',
+              booking_date: '2022-11-29',
               booking_time: '08:00:00',
               client_id: 1,
               treatment_id: 1,
@@ -112,7 +112,7 @@ describe("The Booking Salon", function () {
             },
             {
               id: 2,
-              booking_date: new Date'2022-11-28T22',
+              booking_date: '2022-11-29',
               booking_time: '09:00:00',
               client_id: 2,
               treatment_id: 2,
