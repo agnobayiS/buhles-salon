@@ -69,7 +69,11 @@ export default function salonBooking(db) {
     }
 
     async function totalIncomeForDay(date){
-        
+
+    }
+
+    async function mostValuebleClient(){
+        await db.manyOrNone(`select client_id from booking group by client_id Having count(client_id)`)
     }
 
 
