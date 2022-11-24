@@ -11,7 +11,7 @@ const config = {
 
 const pgp = pgPromise({});
 const db = pgp(config);
-console.log(db);
+
 let booking = salonBooking(db);
 
 describe("The Booking Salon", function () {
