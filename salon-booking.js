@@ -39,7 +39,7 @@ export default function salonBooking(db) {
 
         } else {
 
-            let book = await db.none(`insert into booking(client_id, treatment_id, stylist_id, booking_date::text ,booking_time) values ($1, $2, $3, $4, $5)`,
+            let book = await db.none(`insert into booking(client_id, treatment_id, stylist_id, booking_date :: text ,booking_time) values ($1, $2, $3, $4, $5)`,
                 [clientId, treatmentId, treatmentId, date, time])
 
             return book
