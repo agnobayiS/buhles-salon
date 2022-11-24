@@ -25,13 +25,29 @@ describe("The Booking Salon", function () {
     it("should be able to list treatments", async function () {
 
         const treatments = await booking.findAllTreatments();
+        
 
         assert.deepEqual([
-            { id: 1, type: 'Pedicure', code: 'ped', price: '175.00' },
-            { id: 2, type: 'Manicure', code: 'man', price: '215.00' },
-            { id: 3, type: 'Make up', code: 'mak', price: '185.00' },
-            { id: 4, type: 'Brows & Lashes', code: 'bro', price: '240.00' }
-        ]
+            {
+              code: 'man',
+              id: 1,
+              price: '215.00',
+              type: 'Manicure'
+            },
+            {
+              code: 'mak',
+              id: 2,
+              price: '185.00',
+              type: 'Make up'
+            },
+            {
+              code: 'bro',
+              id: 3,
+              price: '240.00',
+              type: 'Brows & Lashes'
+            }
+          ]
+          
 
             , treatments);
     });
