@@ -34,6 +34,13 @@ create table booking (
     foreign key (stylist_id) references style(id)
 );
 
+    id 
+	booking_date::text,
+    booking_time
+    client_id,
+    treatment_id,
+    stylist_id
+
 
 
 

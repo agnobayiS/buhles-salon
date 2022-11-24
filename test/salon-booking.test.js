@@ -66,7 +66,7 @@ describe("The Booking Salon", function () {
                 booking_time: '07:00:00',
                 client_id: 1,
                 treatment_id: 1,
-                stylist_id: 1
+                stylist_id: 2
             }
         ]
 
@@ -88,7 +88,7 @@ describe("The Booking Salon", function () {
                 booking_time: '08:00:00',
                 client_id: 1,
                 treatment_id: 1,
-                stylist_id: 1
+                stylist_id: 2
             }
         ], clientBooking)
     })
@@ -101,6 +101,9 @@ describe("The Booking Salon", function () {
 
         let bookingz = await booking.findAllBookingsby('2022-11-29');
 
+        console.log("---------------------");
+        console.log(bookingz);
+
         assert.deepEqual([
             {
               id: 1,
@@ -108,7 +111,7 @@ describe("The Booking Salon", function () {
               booking_time: '08:00:00',
               client_id: 1,
               treatment_id: 1,
-              stylist_id: 1
+              stylist_id: 2
             },
             {
               id: 2,
@@ -116,7 +119,7 @@ describe("The Booking Salon", function () {
               booking_time: '09:00:00',
               client_id: 2,
               treatment_id: 2,
-              stylist_id: 2
+              stylist_id: 3
             }
           ]
           , bookingz)

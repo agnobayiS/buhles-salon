@@ -25,6 +25,8 @@ export default function salonBooking(db) {
 
     async function makeBooking(clientId, treatmentId, stylistId, date, time) {
 
+        // console.log(arguments)
+
         let times = await db.manyOrNone(`select booking_time from booking where stylist_Id = $1 `, [stylistId])
         let dates = await db.manyOrNone(`select booking_date from booking where stylist_Id = $1 `, [stylistId])
         let treatment = await db.manyOrNone(`select treatment_id from booking where booking_date  =$1 and booking_time = $2 `, [date, time])
@@ -39,33 +41,58 @@ export default function salonBooking(db) {
 
         } else {
 
-            let book = await db.none(`insert into booking(client_id, treatment_id, stylist_id, booking_date :: text ,booking_time) values ($1, $2, $3, $4, $5)`,
-                [clientId, treatmentId, treatmentId, date, time])
+            let book = await db.none(`insert into booking(client_id, treatment_id, stylist_id, booking_date, booking_time) values ($1, $2, $3, $4, $5)`,
+                [clientId, treatmentId, stylistId, date, time])
 
             return book
         }
     }
 
     async function findAllBookingsby(date) {
-        return await db.manyOrNone(`select * from booking where booking_date  = $1`, [date])
+        return await db.manyOrNone(`select  id ,
+        booking_date::text,
+        booking_time,
+        client_id,
+        treatment_id,
+        stylist_id from booking where booking_date  = $1`, [date])
     }
 
     async function findAllBookings() {
-        return await db.manyOrNone(`select * from booking`)
+        return await db.manyOrNone(`select  id, 
+        booking_date::text,
+        booking_time,
+        client_id,
+        treatment_id,
+        stylist_id from booking`)
         //  where booking_date = $1`,[date])
     }
 
     async function findClientBookings(clientId) {
-        return await db.manyOrNone(`select * from booking where client_id = $1`, [clientId])
+        return await db.manyOrNone(`select  id ,
+        booking_date::text,
+        booking_time,
+        client_id,
+        treatment_id,
+        stylist_id from booking where client_id = $1`, [clientId])
     }
     async function findStylistsForTreatment(treatmentId) {
 
-        await db.manyOrNone(`select * from booking where client_id = $1`, [treatmentId])
+        await db.manyOrNone(`select  id, 
+        booking_date::text,
+        booking_time,
+        client_id,
+        treatment_id,
+        stylist_id from booking where client_id = $1`, [treatmentId])
 
     }
 
     async function findAllBookingz({date, time}){
-        await db.manyOrNone(`select * from booking where (booking_date,booking_time) values ($1, $2) `,[date,time])
+        await db.manyOrNone(`select  id ,
+        booking_date::text,
+        booking_time,
+        client_id,
+        treatment_id,
+        stylist_id from booking where (booking_date,booking_time) values ($1, $2) `,[date,time])
     }
 
     async function totalIncomeForDay(date){
